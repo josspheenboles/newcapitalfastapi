@@ -1,0 +1,47 @@
+Path parameters
+    separated by forward slashes /
+    Mandatory,Identify a specific resource,
+    Hierarchical Relationships
+        https://api.example.com/users/42/orders/105
+    Best Practices:
+        Use meaningful names 
+        never put sensitive data like passwords or API keys
+
+    @app.get("/items/{item_id}")
+    def read_item(item_id: int):
+
+    @app.get("/files/{file_path:path}")
+    def read_file(file_path: str):
+
+
+
+Query Parameters:
+    optional,used to filter, sort, paginate, or search
+    Appended after ?,    Separated by &
+    Key-Value Format
+    Multiple Parameters:
+        https://api.example.com/products?status=active&sort=price_asc&page=2&limit=20
+    @app.get("/items/")
+    def read_items(skip: int = 0, limit: int = 10):
+
+    @app.get("/users/{user_id}/items/{item_id}")
+    def read_user_item(    user_id: int,     item_id: str, 
+    q: Union[str, None] = None,     short: bool = False):
+
+route definitions:
+    @app.get("/items/")
+    def get_items():
+        return {"message": "Get all items"}
+
+    @app.post("/items/")
+    def create_item():
+        return {"message": "Create a new item"}
+
+    @app.put("/items/{item_id}")
+    def update_item(item_id: int):
+        return {"message": f"Update item {item_id}"}
+
+    @app.delete("/items/{item_id}")
+    def delete_item(item_id: int):
+        return {"message": f"Delete item {item_id}"}
+
