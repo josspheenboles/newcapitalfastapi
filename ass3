@@ -1,0 +1,29 @@
+1-Create a project directory named python_api_lab and navigate into it
+2-Create a virtual environment named venv using Python's standard venv module or virtualenv
+3-Activate the virtual environment
+4-Install the external library requests
+5-Export your dependencies into a requirements.txt file:
+=====================================
+Given the following raw list of product names with messy formatting and price tags:
+
+Python
+raw_products = [
+    "  laptop:1200 ",
+    "MOUSE:25",
+    "  KEYBOARD:75",
+    "monitor:300 ",
+    "  cable:10",
+    "DESK:450"
+]
+Using a single list comprehension, transform raw_products into a list of formatted strings: ["Product: <NAME_IN_TITLE_CASE> - Price: $<PRICE>"].
+
+Filter the results so that only products with a price greater than $50 are included.
+==================================
+Write a function fetch_users() that sends a GET request to the endpoint.
+
+Check if the response status code is 200 (OK). If not, raise or print an error message.
+
+Parse the JSON response into a list of Python dictionaries and return it.
+
+Endpoint: [https://jsonplaceholder.typicode.com/users]
+==========================================

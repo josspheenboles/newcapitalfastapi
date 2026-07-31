@@ -1,0 +1,42 @@
+Write a script that asks the user for the total price of a grocery order (float) and the number of items purchased (int). Calculate the average price per item and print a formatted summary rounded to 2 decimal places.
+
+Sample Input:
+
+Total Price: 45.8
+
+Item Count: 4
+
+Expected Output:
+
+Plaintext
+Average price per item: $11.45
+
+==================================
+Prompt the user to enter a sentence. Write a program that:
+
+Cleans any extra whitespace from the beginning and end using a string method.
+
+Displays the sentence in ALL CAPS.
+
+Counts and prints how many characters long the cleaned sentence is (including spaces).
+
+Sample Input: "  python programming is fun  "
+============================================
+Ask the user to type anything into an input(). Write a program that prints True if the user actually typed something, or False if they pressed Enter without typing any characters (an empty string).
+
+Hint: Leverage Python's truthy/falsy evaluation or bool().
+===========================================
+Given a list of student names that contains duplicates and extra whitespace:
+
+Python
+raw_students = [" Alice ", "Bob", "Alice ", " Charlie", "Bob", "David"]
+Write a program that cleans each name by stripping surrounding spaces, removes all duplicate entries, and prints the unique student names as a set.
+===========================================
+Create a 2-question math quiz:
+
+Ask the user: "What is 15 // 4?"
+
+Ask the user: "What is 15 % 4?"
+
+Convert their responses to integers. Compare their answers to the actual calculated results and print their final score out of 2.
+========================

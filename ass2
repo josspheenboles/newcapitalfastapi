@@ -1,0 +1,24 @@
+Write a function read_log_file(filename) that:
+
+Takes a string filename as input.
+
+Attempts to open and read all lines from the file.
+
+Uses a try-except block to gracefully handle two specific errors:
+
+FileNotFoundError: Print a friendly message ("Error: Log file not found.") and return an empty list [].
+
+PermissionError: Print a friendly message ("Error: You do not have permission to read this file.") and return an empty list [].
+
+Uses a finally block to print "File access attempt completed." regardless of success or failure.
+
+
+==============================================
+Write a function parse_log_line(line) that takes a single text line from the log file (formatted as TIMESTAMP | SEVERITY | MESSAGE):
+
+Strips whitespace and splits the line by the pipe character (|).
+
+If the line doesn't have exactly 3 components, raise a custom ValueError("Malformed log entry").
+
+Returns a dictionary containing {"timestamp": ..., "severity": ..., "message": ...} with severity converted to uppercase.
+==============================================
