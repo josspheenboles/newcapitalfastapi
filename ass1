@@ -1,0 +1,27 @@
+Assignment 1: Path & Query Parameters
+Objective: Build an endpoint that utilizes both a path parameter and optional query parameters.
+
+Task: Create a FastAPI application with a route: /catalog/{category}/items/{item_id}.
+
+Requirements:
+
+category (path parameter) must be a string.
+
+item_id (path parameter) must be an integer with validation ensuring it is greater than 0 (ge=1).
+
+Add two query parameters: include_reviews (boolean, defaulting to false) and tag (optional string, maximum length of 20 characters).
+
+Return a dictionary echoing back all parameters received.
+
+Assignment 2: CRUD Routing & HTTP Methods
+Objective: Implement multiple HTTP methods on a resource collection.
+
+Task: Create a resource router for /books supporting four standard operations:
+
+GET /books/ - Returns a list of books (supports optional query parameters limit and offset for pagination).
+
+POST /books/ - Simulates creating a new book.
+
+PUT /books/{book_id} - Simulates updating an existing book by its integer ID.
+
+DELETE /books/{book_id} - Simulates deleting a book by its integer ID
