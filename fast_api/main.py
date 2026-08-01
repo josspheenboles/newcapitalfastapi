@@ -3,7 +3,7 @@ from fastapi import pydantic
 # input model
 class Item(pydantic.BaseModel):
     id: int
-    name: str
+    name: str =Field(...,min_length=1,max_length=100)
 
 items=[
         {"id":1,"name":'item1'},
