@@ -42,9 +42,10 @@ def read_item(item_id:int):
 
 @app.post("/items/",status_code=status.HTTP_201_CREATED,response_model=ItemResponse)
 def create_item(item: Item):
-    newid=len(items) + 1
-    item_data = {"id": newid, "name": item.name}
-    items.append(item_data)
+    # newid=len(items) + 1
+    # item_data = {"id": newid, "name": item.name}
+    # items.append(item_data)
+    item_data=item.model_dump()
     return item_data
 
 
