@@ -40,8 +40,10 @@ def read_item(item_id:int):
     return {"error": "Item not found"}
 
 
-@app.post("/items/",status_code=status.HTTP_201_CREATED)
+@app.post("/items/",status_code=status.HTTP_201_CREATED,response_model=ItemResponse)
 def create_item(item: Item):
+    newid=len(items) + 1
+    item_data = {"id": newid, "name": item.name}
     items.append(item)
     return item
 
