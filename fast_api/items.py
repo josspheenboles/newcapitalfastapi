@@ -45,6 +45,7 @@ def create_item(item: Item):
     # newid=len(items) + 1
     # item_data = {"id": newid, "name": item.name}
     # items.append(item_data)
+    # 'item' is automatically parsed and validated as an instance of the Item class
     item_data=item.model_dump()
     return item_data
 
