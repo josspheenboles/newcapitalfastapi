@@ -1,4 +1,9 @@
 from fastapi import FastAPI
+from fastapi import pydantic
+# input model
+class Item(pydantic.BaseModel):
+    id: int
+    name: str
 
 items=[
         {"id":1,"name":'item1'},
