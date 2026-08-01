@@ -32,12 +32,12 @@ def read_items(pagenumber:int=0,page_size:int=0):
     return items
 
 
-@app.get("/items/{item_id}",status_code=status.HTTP_200_OK)
+@app.get("/items/{item_id}",status_code=status.HTTP_200_OK,response_model=ItemResponse)
 def read_item(item_id:int):
     for item in items:
         if item["id"] == item_id:
             return item
-    return {"error": "Item not found"}
+    return ItemResponse(id=0, name="Item not found")
 
 
 @app.post("/items/",status_code=status.HTTP_201_CREATED,response_model=ItemResponse)
