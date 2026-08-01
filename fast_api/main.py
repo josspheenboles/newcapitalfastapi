@@ -1,20 +1,7 @@
 from fastapi import FastAPI
-from fastapi import pydantic
-# input model
-class Item(pydantic.BaseModel):
-    id: int
-    name: str =Field(...,min_length=1,max_length=100)
-#output model
-class ItemOut(pydantic.BaseModel):
-    # id: int
-    name: str
-    # Tells Pydantic to read data even if it comes from ORM models (like SQLAlchemy)
-    model_config = {"from_attributes": True}
+from pydantic import BaseModel
 
-items=[
-        {"id":1,"name":'item1'},
-         {"id":2,"name":'item2'}
-    ]
+items=[   ]
 
 # create app
 app=FastAPI()

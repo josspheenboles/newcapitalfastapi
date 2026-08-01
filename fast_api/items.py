@@ -1,4 +1,13 @@
 from fastapi import FastAPI,status
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    id: int
+    name: str
+
+class ItemOut(BaseModel):
+    id: int
+    name: str
 
 app = FastAPI()
 
