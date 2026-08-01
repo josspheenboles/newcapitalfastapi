@@ -1,6 +1,9 @@
-from fastapi import FastAPI,status
+from fastapi import FastAPI,status, UploadFile, File,HTTPException
 from pydantic import BaseModel
 from pathlib import Path
+from typing import List,Annotated
+import shutil
+
 
 # Directory to save uploaded files
 UPLOAD_DIR = Path("uploaded_files")
@@ -17,6 +20,8 @@ class ItemResponse(BaseModel):
 
 
 
+
+
 app = FastAPI()
 
 items = [
@@ -26,6 +31,34 @@ items = [
     {"id": 4, "name": "Item 4"},
 ]
 
+
+
+@app.post("/uploadfile/")
+async def upload_file(file: Annotated[UploadFile, File(description="Upload a file")]):
+    # Validate file type if necessary (e.g., allow only images)
+    if file.content_type not in ["image/jpeg", "image/png", "application/pdf"]:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid file type. Only JPEG, PNG, and PDF are allowed."
+        )
+
+    file_path = UPLOAD_DIR / file.filename
+    try:
+        with open(file_path, "wb") as f:
+            shutil.copyfileobj(file.file, f)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to save the file: {str(e)}"
+        )
+    finally:
+        await file.close()
+    return {
+        "filename": file.filename,
+        "content_type": file.content_type,
+        "size": file.size,
+        "saved_path": str(file_path)
+    }
 
 @app.get("/items/",status_code=status.HTTP_200_OK, response_model= list[ItemResponse])
 def read_items(pagenumber:int=0,page_size:int=0):
