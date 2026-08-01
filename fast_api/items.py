@@ -5,9 +5,7 @@ class Item(BaseModel):
     id: int
     name: str
 
-class ItemOut(BaseModel):
-    id: int
-    name: str
+
 
 app = FastAPI()
 
@@ -39,7 +37,7 @@ def read_item(item_id:int):
 
 
 @app.post("/items/",status_code=status.HTTP_201_CREATED)
-def create_item(item: dict):
+def create_item(item: Item):
     items.append(item)
     return item
 
