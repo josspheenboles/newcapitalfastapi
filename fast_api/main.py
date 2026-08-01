@@ -8,7 +8,8 @@ class Item(pydantic.BaseModel):
 class ItemOut(pydantic.BaseModel):
     # id: int
     name: str
-
+    # Tells Pydantic to read data even if it comes from ORM models (like SQLAlchemy)
+    model_config = {"from_attributes": True}
 
 items=[
         {"id":1,"name":'item1'},
