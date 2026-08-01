@@ -48,13 +48,13 @@ def create_item(item: Item):
     return item_data
 
 
-@app.put("/items/{item_id}",status_code=status.HTTP_200_OK)
-def update_item(item_id: int, updated_item: dict):
-    for index, item in enumerate(items):
-        if item["id"] == item_id:
-            items[index] = updated_item
-            return updated_item
-    return {"error": "Item not found"}
+@app.put("/items/{item_id}",status_code=status.HTTP_200_OK,response_model=ItemResponse)
+def update_item(item_id: int, updated_item: Item):
+    for index, itemva in enumerate(items):
+        if itemva["id"] == item_id:
+            items[index] = {"id": item_id, "name": updated_item.name}
+            return ItemResponse(id=item_id, name=updated_item.name)
+    return ItemResponse(id=0, name="Item not found")
 
 @app.patch("/items/{item_id}",status_code=status.HTTP_200_OK)
 def partial_update_item(item_id: int, updated_fields: dict):
