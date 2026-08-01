@@ -1,0 +1,2 @@
+Pydantic models serve as the blueprint and data contract for your API
+they handle both Request Validation (incoming data) and Response Serialization/Validation (outgoing data) using Python type hints
