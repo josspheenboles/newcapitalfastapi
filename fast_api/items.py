@@ -5,6 +5,10 @@ class Item(BaseModel):
     id: int
     name: str
 
+class ItemResponse(BaseModel):
+    id: int
+    name: str
+
 
 
 app = FastAPI()
