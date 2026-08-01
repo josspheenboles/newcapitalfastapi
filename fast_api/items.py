@@ -2,7 +2,7 @@ from fastapi import FastAPI,status
 from pydantic import BaseModel
 
 class Item(BaseModel):
-    id: int
+    # id: int
     name: str
 
 class ItemResponse(BaseModel):
@@ -44,8 +44,8 @@ def read_item(item_id:int):
 def create_item(item: Item):
     newid=len(items) + 1
     item_data = {"id": newid, "name": item.name}
-    items.append(item)
-    return item
+    items.append(item_data)
+    return item_data
 
 
 @app.put("/items/{item_id}",status_code=status.HTTP_200_OK)
