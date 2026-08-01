@@ -53,9 +53,12 @@ def create_item(item: Item):
 @app.put("/items/{item_id}",status_code=status.HTTP_200_OK,response_model=ItemResponse)
 def update_item(item_id: int, updated_item: Item):
     for index, itemva in enumerate(items):
-        if itemva["id"] == item_id:
+        print(f"itemva: {itemva}, item_id: {item_id}")
+        if itemva["id"]== item_id:
             items[index] = {"id": item_id, "name": updated_item.name}
-            return ItemResponse(id=item_id, name=updated_item.name)
+            items[index]['name'] = updated_item.model_dump()['name']
+            return items[index]
+            # return ItemResponse(id=item_id, name=updated_item.name)
     return ItemResponse(id=0, name="Item not found")
 
 @app.patch("/items/{item_id}",status_code=status.HTTP_200_OK)
