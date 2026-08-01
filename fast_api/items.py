@@ -21,7 +21,7 @@ items = [
 ]
 
 
-@app.get("/items/",status_code=status.HTTP_200_OK)
+@app.get("/items/",status_code=status.HTTP_200_OK, response_model= list[ItemResponse])
 def read_items(pagenumber:int=0,page_size:int=0):
     if pagenumber == 0:
         return items
