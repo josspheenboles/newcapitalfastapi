@@ -4,6 +4,11 @@ from fastapi import pydantic
 class Item(pydantic.BaseModel):
     id: int
     name: str =Field(...,min_length=1,max_length=100)
+#output model
+class ItemOut(pydantic.BaseModel):
+    # id: int
+    name: str
+
 
 items=[
         {"id":1,"name":'item1'},
