@@ -1,5 +1,11 @@
 from fastapi import FastAPI,status
 from pydantic import BaseModel
+from pathlib import Path
+
+# Directory to save uploaded files
+UPLOAD_DIR = Path("uploaded_files")
+UPLOAD_DIR.mkdir(exist_ok=True)
+
 
 class Item(BaseModel):
     # id: int

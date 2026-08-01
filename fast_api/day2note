@@ -1,3 +1,5 @@
 FastAPI uses standard Python type hints, and its data validation engine is entirely powered by Pydantic
 
 In FastAPI, separating Request Models and Response Models is a best practice for building secure, clean, and maintainable APIs.
+file upload
+    pip install python-multipart
