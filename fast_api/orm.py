@@ -40,3 +40,14 @@ def read_department(department_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Department not found")
     return department
 
+@app.put("/departments/{department_id}", response_model=schemas.Department)
+def update_department(department_id: int, department: schemas.DepartmentCreate, db: Session = Depends(get_db)):
+    db_department = db.query(models.Department).filter(models.Department.id == department_id).first()
+    if db_department is None:
+        raise HTTPException(status_code=404, detail="Department not found")
+    db_department.name = department.name
+    db.commit()
+    db.refresh(db_department)
+    return db_department
+
+
