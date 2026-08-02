@@ -7,6 +7,8 @@ import os
 from dotenv import load_dotenv
 
 
+# Load variables from .env file into environment
+load_dotenv()
 
 # Directory to save uploaded files
 UPLOAD_DIR = Path("uploaded_files")
