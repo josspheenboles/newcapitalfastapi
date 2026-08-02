@@ -94,3 +94,12 @@ def update_employee(employee_id: int, employee: schemas.EmployeeCreate, db: Sess
     db.refresh(db_employee)
     return db_employee
 
+@app.delete("/employees/{employee_id}", response_model=schemas.Employee)
+def delete_employee(employee_id: int, db: Session = Depends(get_db)):
+    db_employee = db.query(models.Employee).filter(models.Employee.id == employee_id).first()
+    if db_employee is None:
+        raise HTTPException(status_code=404, detail="Employee not found")
+    db.delete(db_employee)
+    db.commit()
+    return db_employee
+
