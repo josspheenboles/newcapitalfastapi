@@ -1,0 +1,8 @@
+Task 1: Pydantic Request & Response Models with Automatic Validation
+Create a Python script using Pydantic that models a User Registration and Profile System.
+
+Requirements:
+
+Define a UserCreate request model with fields: username (alphanumeric, min length 3), email (valid email format), age (integer, must be 18 or older using a field validator), and role (constrained to a literal or enum: admin, editor, viewer).
+
+Define a UserResponse model that excludes sensitive fields (like a password, if added) and includes a created_at timestamp generated automatically.
