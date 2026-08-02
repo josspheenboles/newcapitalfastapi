@@ -59,3 +59,14 @@ def delete_department(department_id: int, db: Session = Depends(get_db)):
     db.commit()
     return db_department
 
+
+# Employee CRUD operations
+@app.post("/employees/", response_model=schemas.Employee)
+def create_employee(employee: schemas.EmployeeCreate, db: Session = Depends(get_db)):
+    db_employee = models.Employee(**employee.model_dump())
+    db.add(db_employee)
+    db.commit()
+    db.refresh(db_employee)
+    return db_employee
+
+
