@@ -4,6 +4,9 @@ from typing import Optional, List
 class DepartmentBase(BaseModel):
     name: str
 
+class DepartmentCreate(DepartmentBase):
+    pass
+
 class Department(DepartmentBase):
     id: int
     employees: List["Employee"] = []
