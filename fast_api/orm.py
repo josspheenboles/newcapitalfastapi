@@ -18,3 +18,5 @@ def get_db():
     finally:
         db.close()
 
+# Department CRUD operations
+
