@@ -19,12 +19,4 @@ def get_db():
         db.close()
 
 # Department CRUD operations
-# Department CRUD operations
-@app.post("/departments/", response_model=schemas.Department)
-def create_department(department: schemas.DepartmentCreate, db: Session = Depends(get_db)):
-    db_department = models.Department(name=department.name)
-    db.add(db_department)
-    db.commit()
-    db.refresh(db_department)
-    return db_department
 
