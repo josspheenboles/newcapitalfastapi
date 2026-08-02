@@ -69,4 +69,10 @@ def create_employee(employee: schemas.EmployeeCreate, db: Session = Depends(get_
     db.refresh(db_employee)
     return db_employee
 
+@app.get("/employees/", response_model=List[schemas.Employee])
+def read_employees(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    employees = db.query(models.Employee).offset(skip).limit(limit).all()
+    return employees
+
+
 
