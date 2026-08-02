@@ -21,6 +21,8 @@ class EmployeeBase(BaseModel):
     dno: int
     manager_id: Optional[int] = None
 
+class EmployeeCreate(EmployeeBase):
+    pass
 
 class Employee(EmployeeBase):
     id: int
