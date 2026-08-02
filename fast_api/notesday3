@@ -1,0 +1,4 @@
+SQLAlchemy Models: Defining the Department and Employee tables with relationships (including a self-referencing manager relationship).
+Pydantic Schemas: Handling data validation and complex nested responses.
+FastAPI Routes: Implementing full CRUD operations for both entities.
+SQLite Database: A lightweight database setup that works out of the box.
