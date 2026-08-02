@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Directory to save uploaded files
-UPLOAD_DIR = Path("uploaded_files")
+UPLOAD_DIR = Path(os.getenv("uploadpath"))
 UPLOAD_DIR.mkdir(exist_ok=True)
 
 
