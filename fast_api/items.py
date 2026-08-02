@@ -3,6 +3,9 @@ from pydantic import BaseModel
 from pathlib import Path
 from typing import List,Annotated
 import shutil
+import os
+from dotenv import load_dotenv
+
 
 
 # Directory to save uploaded files
