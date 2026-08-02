@@ -33,3 +33,10 @@ def read_departments(skip: int = 0, limit: int = 100, db: Session = Depends(get_
     departments = db.query(models.Department).offset(skip).limit(limit).all()
     return departments
 
+@app.get("/departments/{department_id}", response_model=schemas.Department)
+def read_department(department_id: int, db: Session = Depends(get_db)):
+    department = db.query(models.Department).filter(models.Department.id == department_id).first()
+    if department is None:
+        raise HTTPException(status_code=404, detail="Department not found")
+    return department
+
