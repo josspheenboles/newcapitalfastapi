@@ -17,3 +17,13 @@ class EmployeeBase(BaseModel):
     salary: int
     dno: int
     manager_id: Optional[int] = None
+
+
+class Employee(EmployeeBase):
+    id: int
+    department: DepartmentBase
+    manager: Optional["EmployeeBase"] = None
+    subordinates: List["EmployeeBase"] = []
+
+    class Config:
+        from_attributes = True
