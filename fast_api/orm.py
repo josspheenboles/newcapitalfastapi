@@ -74,5 +74,11 @@ def read_employees(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
     employees = db.query(models.Employee).offset(skip).limit(limit).all()
     return employees
 
+@app.get("/employees/{employee_id}", response_model=schemas.Employee)
+def read_employee(employee_id: int, db: Session = Depends(get_db)):
+    employee = db.query(models.Employee).filter(models.Employee.id == employee_id).first()
+    if employee is None:
+        raise HTTPException(status_code=404, detail="Employee not found")
+    return employee
 
 
