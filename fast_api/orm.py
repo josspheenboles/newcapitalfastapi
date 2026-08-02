@@ -82,3 +82,15 @@ def read_employee(employee_id: int, db: Session = Depends(get_db)):
     return employee
 
 
+
+@app.put("/employees/{employee_id}", response_model=schemas.Employee)
+def update_employee(employee_id: int, employee: schemas.EmployeeCreate, db: Session = Depends(get_db)):
+    db_employee = db.query(models.Employee).filter(models.Employee.id == employee_id).first()
+    if db_employee is None:
+        raise HTTPException(status_code=404, detail="Employee not found")
+    for key, value in employee.model_dump().items():
+        setattr(db_employee, key, value)
+    db.commit()
+    db.refresh(db_employee)
+    return db_employee
+
