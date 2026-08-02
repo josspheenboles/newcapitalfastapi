@@ -1,0 +1,40 @@
+Build a backend application using FastAPI and SQLite that implements full CRUD (Create, Read, Update, Delete) operations for two related tables connected via a Foreign Key (FK) relationship.
+
+Core Requirements
+Database & ORM:
+
+Use SQLite as the database.
+
+Use SQLAlchemy to define the database tables and relationships.
+
+Establish a One-to-Many relationship between two entities of your choice (e.g., Category and Product, or Author and Book).
+
+Data Validation:
+
+Use Pydantic schemas for request body validation, response serialization, and handling foreign key associations.
+
+Required Endpoints:
+
+Parent Entity CRUD:
+
+Create a parent record.
+
+Read all parent records (including their associated child records).
+
+Read a single parent record by ID.
+
+Delete a parent record (with cascade delete for related child records).
+
+Child Entity CRUD (Foreign Key Dependent):
+
+Create a child record linked specifically to an existing parent ID.
+
+Read all child records.
+
+Delete a child record by ID.
+
+Deliverables:
+
+A modular project file structure (database.py, models.py, schemas.py, main.py).
+
+Fully working endpoints testable through FastAPI's automatic interactive documentation (/docs).
