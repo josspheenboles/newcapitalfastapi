@@ -50,4 +50,12 @@ def update_department(department_id: int, department: schemas.DepartmentCreate, 
     db.refresh(db_department)
     return db_department
 
+@app.delete("/departments/{department_id}", response_model=schemas.Department)
+def delete_department(department_id: int, db: Session = Depends(get_db)):
+    db_department = db.query(models.Department).filter(models.Department.id == department_id).first()
+    if db_department is None:
+        raise HTTPException(status_code=404, detail="Department not found")
+    db.delete(db_department)
+    db.commit()
+    return db_department
 
