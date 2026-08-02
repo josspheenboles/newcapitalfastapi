@@ -27,3 +27,7 @@ class Employee(EmployeeBase):
 
     class Config:
         from_attributes = True
+
+# Update forward refs for circular dependencies
+Department.model_rebuild()
+Employee.model_rebuild()
